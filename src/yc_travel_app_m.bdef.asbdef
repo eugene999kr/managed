@@ -1,0 +1,24 @@
+projection;
+strict ( 2 );
+
+define behavior for YC_TRAVEL_app_M //alias <alias_name>
+use etag
+{                //yc...app는 화면 구성을 다르게 하기 위해 base view에서 생성한 consum이고, 거기 ui관련 지정하고, 그걸로 behav를 생성한다.
+//  use create;  //yc_travel_app_m projection view를 base view인 yi_... 참조로 생성하고, 그 view로 behav def를 생성하면
+  use update;    // 기존에 base view에서 정의했던게 다 따라오는데(create,... copy trave...accept..),
+//  use delete;  // consumption에서는 그 중 일부만 사용할 수 있게 여기서 조정한다.
+
+  use action acceptTravel;
+  use action rejectTravel;
+//  use action copyTravel;
+
+//  use association _Booking { create; }  //이 approve view에서는 cba혹은 book 관련 수정 하지 않음
+}
+
+//define behavior for YC_BOOKING_app_M //alias <alias_name>
+//{
+//  use update;
+//  use delete;
+//
+//  use association _Travel;
+//}

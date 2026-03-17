@@ -1,0 +1,55 @@
+@Metadata.layer: #CORE
+@Search.searchable: true //화면 상단에 search필드가 보여진다.
+@UI.headerInfo: {      // 조회화면 상단에 보여줄 title을 지정하고 키가 되는 필드명 value를 넣어주면 건수가 보여진다
+    typeName: 'BookingSupplement',
+    typeNamePlural: 'BookingSupplements',
+    title: {
+        type: #STANDARD,
+        label: 'BookingSupplement',
+        value: 'BookingSupplementId'
+    }
+}
+annotate entity YC_BOOKSUPPL_EUG_M with
+{
+  @UI.facet: [{   //facet를 지정하면 라인을 클릭했을때 object page가 열리고, identification으로 지정한 내용이 보여진다.
+       id: 'BookingSuppl',
+       purpose: #STANDARD,
+       position: 10,
+       label: 'BookingSupplement',
+       type: #IDENTIFICATION_REFERENCE
+   } ]
+  @Search.defaultSearchElement: true
+  TravelId;
+  @Search.defaultSearchElement: true
+  BookingId;
+  @UI.lineItem: [{ position: 10 }]  // 이걸 해주면 자동으로 조회되고, 안하면 필드 선택하고 go 해야함
+  @UI.identification: [{ position: 10 }]
+  BookingSupplementId;
+  
+  @Consumption.valueHelpDefinition: [{ entity : {  name : '/DMO/I_Supplement',
+                                                element: 'SupplementID' } ,
+                     // f4를 하는데, f4를 띄우는 대상이 전체가 아니라 추가 조건이 있는데, 기본은 supplid 같은거 하고
+                     // f4화면에 이미 currency가 있으면 그거하고,price가 있으면 그거랑 같은것만 대상으로한다.
+                     // 이렇게 선택하면 binding으로 연결된 필드도 같이 업데이트 된다.
+                           additionalBinding: [{ element: 'SupplementID',
+                                                 localElement: 'SupplementID'},
+                                               { element: 'Price',
+                                                 localElement: 'Price' },
+                                               { element: 'CurrencyCode',
+                                                 localElement: 'CurrencyCode' }]
+                                     }]  
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  SupplementId;
+  
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  Price;
+  @Consumption.valueHelpDefinition: [{ entity : {  name : 'I_Currency',
+                                                 element: 'Currency' } }]
+  CurrencyCode;
+  @UI.hidden: true
+  LastChangedAt;
+
+
+}

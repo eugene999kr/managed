@@ -1,0 +1,6 @@
+@EndUserText.label: 'tes'
+define service YSV_TRAVEL_EUG_M {
+  expose YC_TRAVEL_EUG_M;
+  expose YC_BOOKING_EUG_M;
+  expose YC_BOOKSUPPL_EUG_M;
+}
