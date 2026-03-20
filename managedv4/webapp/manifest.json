@@ -1,0 +1,197 @@
+{
+  "_version": "1.80.0",
+  "sap.app": {
+    "id": "managedv4",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.21.0",
+      "toolsId": "8a2ecf4c-2406-4223-98eb-cbdb95d58383"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/yui_flight_eug_v4/srvd/sap/ysv_travel_eug_m/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.142.7",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "managedv4.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "YC_TRAVEL_EUG_MList",
+          "target": "YC_TRAVEL_EUG_MList"
+        },
+        {
+          "pattern": "YC_TRAVEL_EUG_M({key}):?query:",
+          "name": "YC_TRAVEL_EUG_MObjectPage",
+          "target": "YC_TRAVEL_EUG_MObjectPage"
+        },
+        {
+          "pattern": "YC_TRAVEL_EUG_M({key})/_Booking({key2}):?query:",
+          "name": "YC_BOOKING_EUG_MObjectPage",
+          "target": "YC_BOOKING_EUG_MObjectPage"
+        }
+      ],
+      "targets": {
+        "YC_TRAVEL_EUG_MList": {
+          "type": "Component",
+          "id": "YC_TRAVEL_EUG_MList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/YC_TRAVEL_EUG_M",
+              "variantManagement": "Page",
+            "views": {
+                "paths": [
+	            {
+	                "key": "tab1",
+	                "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#SPV_All"
+	            },      
+	            { 
+	                "key": "tab2",
+	                "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#SPV_Accepted"
+	            },
+	            {
+	                "key": "tab3",
+	                "annotationPath":        "com.sap.vocabularies.UI.v1.SelectionVariant#Open"  
+	            }              
+	        ],
+	        "showCounts" : false
+	        },
+
+              "navigation": {
+                "YC_TRAVEL_EUG_M": {
+                  "detail": {
+                    "route": "YC_TRAVEL_EUG_MObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "YC_TRAVEL_EUG_MObjectPage": {
+          "type": "Component",
+          "id": "YC_TRAVEL_EUG_MObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/YC_TRAVEL_EUG_M",
+              "navigation": {
+                "_Booking": {
+                  "detail": {
+                    "route": "YC_BOOKING_EUG_MObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "YC_BOOKING_EUG_MObjectPage": {
+          "type": "Component",
+          "id": "YC_BOOKING_EUG_MObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/YC_TRAVEL_EUG_M/_Booking"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}
