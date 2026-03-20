@@ -1,5 +1,0 @@
-@EndUserText.label: 'test'
-define service YSV_TRAVEL_app_M {
-  expose YC_TRAVEL_app_M;
-  expose YC_BOOKING_app_M;
-}
