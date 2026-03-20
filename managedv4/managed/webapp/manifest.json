@@ -134,7 +134,7 @@
 	                "annotationPath":        "com.sap.vocabularies.UI.v1.SelectionVariant#Open"  
 	            }              
 	        ],
-	        "showCounts" : false
+	        "showCounts" : true
 	        },
 
               "navigation": {
