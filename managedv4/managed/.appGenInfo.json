@@ -1,0 +1,33 @@
+{
+  "generationParameters": {
+    "generationDate": "Fri Mar 20 2026 01:24:52 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP Cloud)",
+    "metadataFilename": "",
+    "serviceUrl": "https://302ba387-5fca-4464-ab22-8b974aaf9399.abap.ap21.hana.ondemand.com/sap/opu/odata4/sap/yui_flight_eug_v4/srvd/sap/ysv_travel_eug_m/0001/",
+    "appName": "managed",
+    "appTitle": "eugene tab list",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.142.7",
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.21.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "YC_TRAVEL_EUG_M"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "_Booking"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```",
+    "valueHelpDownloaded": true
+  }
+}
